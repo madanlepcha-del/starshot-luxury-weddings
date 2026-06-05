@@ -9,7 +9,24 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
     server: { entry: "server" },
+    // Prerender every page to static HTML at build time so the site can be deployed
+    // as a static SPA (e.g. Cloudflare Pages) — no server runtime needed.
+    prerender: {
+      enabled: true,
+      crawlLinks: true,
+      pages: [
+        { path: "/" },
+        { path: "/about" },
+        { path: "/gallery" },
+        { path: "/contact" },
+      ],
+    },
+    pages: [
+      { path: "/" },
+      { path: "/about" },
+      { path: "/gallery" },
+      { path: "/contact" },
+    ],
   },
 });
