@@ -84,6 +84,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Luxury, romantic wedding photography in Sydney, Australia." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Starshot — Sydney Wedding Photography" },
+      { name: "twitter:description", content: "Luxury, romantic wedding photography in Sydney, Australia." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/880d4613-e6ec-4d23-aa0c-dba07844c886/id-preview-3f0467ca--34843a74-37f8-444b-86d2-00aad1ab9325.lovable.app-1780626275039.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/880d4613-e6ec-4d23-aa0c-dba07844c886/id-preview-3f0467ca--34843a74-37f8-444b-86d2-00aad1ab9325.lovable.app-1780626275039.png" },
     ],
     links: [
       {
