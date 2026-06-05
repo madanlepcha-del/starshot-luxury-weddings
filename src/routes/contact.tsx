@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { Layout, PageHero } from "@/components/site/Layout";
 import { Section } from "@/components/site/Section";
-import { Mail, MapPin, Instagram } from "lucide-react";
+import { Mail, MapPin, Instagram, Phone } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -47,6 +47,9 @@ function ContactPage() {
             <div className="space-y-4 text-charcoal/80">
               <a href="mailto:hello@starshot.studio" className="flex items-center gap-3 hover:text-champagne transition">
                 <Mail size={16} className="text-champagne" /> hello@starshot.studio
+              </a>
+              <a href="tel:+61400000000" className="flex items-center gap-3 hover:text-champagne transition">
+                <Phone size={16} className="text-champagne" /> +61 400 000 000
               </a>
               <p className="flex items-center gap-3">
                 <MapPin size={16} className="text-champagne" /> Sydney · NSW · Available worldwide
