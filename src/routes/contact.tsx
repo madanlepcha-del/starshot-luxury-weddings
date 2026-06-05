@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { Layout, PageHero } from "@/components/site/Layout";
 import { Section } from "@/components/site/Section";
-import { Mail, MapPin, Instagram } from "lucide-react";
+import { Mail, MapPin, Instagram, Phone } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
