@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Layout, PageHero } from "@/components/site/Layout";
 import { Section } from "@/components/site/Section";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { galleryImages, categories, type GalleryCategory } from "@/lib/gallery-images";
+import { gallery } from "@/content/site";
+
+type CategoryId = (typeof gallery.categories)[number]["id"];
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -20,10 +22,10 @@ export const Route = createFileRoute("/gallery")({
 });
 
 function GalleryPage() {
-  const [filter, setFilter] = useState<GalleryCategory | "all">("all");
+  const [filter, setFilter] = useState<CategoryId>("all");
   const [open, setOpen] = useState<number | null>(null);
 
-  const shown = filter === "all" ? galleryImages : galleryImages.filter((i) => i.category === filter);
+  const shown = filter === "all" ? gallery.images : gallery.images.filter((i) => i.category === filter);
 
   const move = (dir: number) => {
     if (open == null) return;
@@ -33,14 +35,14 @@ function GalleryPage() {
   return (
     <Layout>
       <PageHero
-        eyebrow="Gallery"
-        title="Moments, gathered with care"
-        subtitle="Browse a curated selection of recent work."
+        eyebrow={gallery.hero.eyebrow}
+        title={gallery.hero.title}
+        subtitle={gallery.hero.subtitle}
       />
 
       <Section className="!pt-16">
         <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-14">
-          {categories.map((c) => (
+          {gallery.categories.map((c) => (
             <button
               key={c.id}
               onClick={() => setFilter(c.id)}
@@ -58,7 +60,7 @@ function GalleryPage() {
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-6 [column-fill:_balance]">
           {shown.map((img, i) => (
             <button
-              key={img.src}
+              key={img.src + i}
               onClick={() => setOpen(i)}
               className="mb-4 md:mb-6 block w-full overflow-hidden group break-inside-avoid"
             >
@@ -75,30 +77,14 @@ function GalleryPage() {
 
       {open !== null && (
         <div className="fixed inset-0 z-[100] bg-charcoal/95 flex items-center justify-center p-4 md:p-12 animate-fade-in">
-          <button
-            onClick={() => setOpen(null)}
-            aria-label="Close"
-            className="absolute top-5 right-5 md:top-8 md:right-8 text-ivory/80 hover:text-ivory transition"
-          >
+          <button onClick={() => setOpen(null)} aria-label="Close" className="absolute top-5 right-5 md:top-8 md:right-8 text-ivory/80 hover:text-ivory transition">
             <X size={28} />
           </button>
-          <button
-            onClick={() => move(-1)}
-            aria-label="Previous"
-            className="absolute left-3 md:left-8 text-ivory/80 hover:text-ivory transition"
-          >
+          <button onClick={() => move(-1)} aria-label="Previous" className="absolute left-3 md:left-8 text-ivory/80 hover:text-ivory transition">
             <ChevronLeft size={36} />
           </button>
-          <img
-            src={shown[open].src}
-            alt={shown[open].alt}
-            className="max-h-[88vh] max-w-[88vw] object-contain shadow-2xl"
-          />
-          <button
-            onClick={() => move(1)}
-            aria-label="Next"
-            className="absolute right-3 md:right-8 text-ivory/80 hover:text-ivory transition"
-          >
+          <img src={shown[open].src} alt={shown[open].alt} className="max-h-[88vh] max-w-[88vw] object-contain shadow-2xl" />
+          <button onClick={() => move(1)} aria-label="Next" className="absolute right-3 md:right-8 text-ivory/80 hover:text-ivory transition">
             <ChevronRight size={36} />
           </button>
           <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-ivory/60 text-xs tracking-[0.3em] uppercase">

@@ -3,6 +3,7 @@ import { useState, type FormEvent } from "react";
 import { Layout, PageHero } from "@/components/site/Layout";
 import { Section } from "@/components/site/Section";
 import { Mail, MapPin, Instagram, Phone } from "lucide-react";
+import { contact } from "@/content/site";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -23,55 +24,50 @@ function ContactPage() {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: connect to Formspree / Web3Forms / Firebase.
-    // Replace the form `action` attribute with your Formspree endpoint, e.g.:
-    //   <form action="https://formspree.io/f/yourID" method="POST">
     setSubmitted(true);
   };
 
   return (
     <Layout>
       <PageHero
-        eyebrow="Contact"
-        title="Let's begin your story"
-        subtitle="Share a few details about your day and we'll be in touch within 48 hours."
+        eyebrow={contact.hero.eyebrow}
+        title={contact.hero.title}
+        subtitle={contact.hero.subtitle}
       />
 
       <Section className="!pt-16">
         <div className="grid lg:grid-cols-[1fr_2fr] gap-16">
           <aside className="space-y-10 lg:pr-8 lg:border-r lg:border-border">
             <div>
-              <p className="eyebrow mb-4">Studio</p>
-              <p className="font-serif text-2xl text-charcoal leading-snug">By appointment in Sydney, Australia</p>
+              <p className="eyebrow mb-4">{contact.studio.label}</p>
+              <p className="font-serif text-2xl text-charcoal leading-snug">{contact.studio.text}</p>
             </div>
             <div className="space-y-4 text-charcoal/80">
-              <a href="mailto:hello@starshot.studio" className="flex items-center gap-3 hover:text-champagne transition">
-                <Mail size={16} className="text-champagne" /> hello@starshot.studio
+              <a href={`mailto:${contact.email}`} className="flex items-center gap-3 hover:text-champagne transition">
+                <Mail size={16} className="text-champagne" /> {contact.email}
               </a>
-              <a href="tel:+61400000000" className="flex items-center gap-3 hover:text-champagne transition">
-                <Phone size={16} className="text-champagne" /> +61 400 000 000
+              <a href={`tel:${contact.phoneHref}`} className="flex items-center gap-3 hover:text-champagne transition">
+                <Phone size={16} className="text-champagne" /> {contact.phone}
               </a>
               <p className="flex items-center gap-3">
-                <MapPin size={16} className="text-champagne" /> Sydney · NSW · Available worldwide
+                <MapPin size={16} className="text-champagne" /> {contact.location}
               </p>
-              <a href="#" className="flex items-center gap-3 hover:text-champagne transition">
-                <Instagram size={16} className="text-champagne" /> @starshot.studio
+              <a href={contact.instagramHref} className="flex items-center gap-3 hover:text-champagne transition">
+                <Instagram size={16} className="text-champagne" /> {contact.instagram}
               </a>
             </div>
             <div className="pt-8 border-t border-border">
-              <p className="eyebrow mb-3">Investment</p>
-              <p className="text-charcoal/70 leading-relaxed">
-                Wedding collections begin at $4,800 AUD. Detailed pricing shared upon enquiry.
-              </p>
+              <p className="eyebrow mb-3">{contact.investment.label}</p>
+              <p className="text-charcoal/70 leading-relaxed">{contact.investment.text}</p>
             </div>
           </aside>
 
           <div>
             {submitted ? (
               <div className="bg-beige/40 border border-champagne/40 p-12 text-center">
-                <p className="eyebrow mb-4"><span className="hairline mr-3" />Thank you</p>
-                <h2 className="font-serif text-3xl md:text-4xl text-charcoal">Your enquiry is on its way</h2>
-                <p className="mt-4 text-charcoal/70">We'll be in touch shortly with availability and next steps.</p>
+                <p className="eyebrow mb-4"><span className="hairline mr-3" />{contact.thankYou.eyebrow}</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-charcoal">{contact.thankYou.title}</h2>
+                <p className="mt-4 text-charcoal/70">{contact.thankYou.body}</p>
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-6">
@@ -94,7 +90,7 @@ function ContactPage() {
                   />
                 </div>
                 <button type="submit" className="btn-primary mt-4 hover:bg-transparent hover:text-charcoal w-full sm:w-auto">
-                  Start Your Journey
+                  {contact.submitLabel}
                 </button>
               </form>
             )}
@@ -106,17 +102,9 @@ function ContactPage() {
 }
 
 function Field({
-  label,
-  name,
-  type = "text",
-  required = false,
-  min,
+  label, name, type = "text", required = false, min,
 }: {
-  label: string;
-  name: string;
-  type?: string;
-  required?: boolean;
-  min?: string;
+  label: string; name: string; type?: string; required?: boolean; min?: string;
 }) {
   return (
     <div>
