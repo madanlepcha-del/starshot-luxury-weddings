@@ -3,13 +3,7 @@ import { Layout } from "@/components/site/Layout";
 import { Carousel } from "@/components/site/Carousel";
 import { Section, SectionHeader } from "@/components/site/Section";
 import { ArrowRight, Quote } from "lucide-react";
-import hero from "@/assets/hero.jpg";
-import feat1 from "@/assets/feat-1.jpg";
-import feat2 from "@/assets/feat-2.jpg";
-import feat3 from "@/assets/feat-3.jpg";
-import feat4 from "@/assets/feat-4.jpg";
-import feat5 from "@/assets/feat-5.jpg";
-import about from "@/assets/about.jpg";
+import { home } from "@/content/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,71 +32,44 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const testimonials = [
-  {
-    quote:
-      "Starshot captured our wedding day with such artistry and grace. Every photograph feels like a film still — we will treasure them forever.",
-    author: "Olivia & James",
-    venue: "Gunners Barracks, Sydney",
-  },
-  {
-    quote:
-      "From the first call to the final album, the entire experience felt effortless and luxurious. The images are breathtaking.",
-    author: "Charlotte & Daniel",
-    venue: "Palm Beach Elopement",
-  },
-  {
-    quote:
-      "We didn't just hire a photographer — we gained a calm, generous presence who made our day even more beautiful.",
-    author: "Amelia & Hugo",
-    venue: "Bells at Killcare",
-  },
-];
-
 function HomePage() {
   return (
     <Layout>
       {/* HERO */}
       <section className="relative h-screen min-h-[640px] w-full overflow-hidden">
         <img
-          src={hero}
-          alt="Bride and groom embracing at Sydney Harbour sunset"
+          src={home.hero.image}
+          alt={home.hero.imageAlt}
           className="absolute inset-0 h-full w-full object-cover animate-ken-burns"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/20 to-charcoal/60" />
         <div className="relative h-full flex flex-col items-center justify-center text-center px-6 text-ivory">
-          <p
-            className="eyebrow !text-ivory/80 mb-8 animate-fade-in"
-            style={{ animationDelay: "0.2s" }}
-          >
+          <p className="eyebrow !text-ivory/80 mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
             <span className="hairline mr-3 !bg-ivory/70" />
-            Sydney Wedding Photography
+            {home.hero.eyebrow}
             <span className="hairline ml-3 !bg-ivory/70" />
           </p>
           <h1
             className="font-serif text-5xl md:text-7xl lg:text-8xl max-w-5xl leading-[1.02] animate-fade-up"
             style={{ animationDelay: "0.4s" }}
           >
-            Capturing Timeless
+            {home.hero.title}
             <br />
-            <em className="italic text-champagne font-light">Love Stories</em>
+            <em className="italic text-champagne font-light">{home.hero.titleItalic}</em>
           </h1>
           <p
             className="mt-8 text-base md:text-lg text-ivory/85 max-w-xl font-light animate-fade-up"
             style={{ animationDelay: "0.7s" }}
           >
-            Elegant wedding photography across Sydney and beyond.
+            {home.hero.subtitle}
           </p>
           <Link
             to="/contact"
             className="mt-12 group btn-primary !bg-ivory !text-charcoal !border-ivory hover:!bg-transparent hover:!text-ivory animate-fade-up"
             style={{ animationDelay: "1s" }}
           >
-            Start Your Journey
-            <ArrowRight
-              size={14}
-              className="transition-transform group-hover:translate-x-1"
-            />
+            {home.hero.ctaLabel}
+            <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-ivory/60 text-[10px] tracking-[0.4em] uppercase">
@@ -113,21 +80,13 @@ function HomePage() {
       {/* CAROUSEL */}
       <Section className="!pt-24 !pb-0">
         <SectionHeader
-          eyebrow="Featured Weddings"
-          title="A glimpse of recent love stories"
-          intro="Each wedding is photographed with care, intention, and an eye for the quiet, beautiful moments in between."
+          eyebrow={home.carousel.eyebrow}
+          title={home.carousel.title}
+          intro={home.carousel.intro}
         />
       </Section>
       <div className="pb-24 md:pb-32">
-        <Carousel
-          items={[
-            { src: feat1, alt: "Bride in lace gown by window" },
-            { src: feat2, alt: "Couple walking on coastal cliffs" },
-            { src: feat3, alt: "Luxury reception table" },
-            { src: feat4, alt: "First kiss at ceremony" },
-            { src: feat5, alt: "First dance under fairy lights" },
-          ]}
-        />
+        <Carousel items={[...home.carousel.items]} />
       </div>
 
       {/* ABOUT PREVIEW */}
@@ -135,8 +94,8 @@ function HomePage() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div className="relative aspect-[4/5] overflow-hidden">
             <img
-              src={about}
-              alt="Wedding photographer behind the camera"
+              src={home.aboutPreview.image}
+              alt={home.aboutPreview.imageAlt}
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] hover:scale-105"
             />
@@ -145,23 +104,21 @@ function HomePage() {
           <div>
             <p className="eyebrow mb-5">
               <span className="hairline mr-3" />
-              About Starshot
+              {home.aboutPreview.eyebrow}
             </p>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-charcoal leading-[1.05]">
-              A storyteller behind the lens
+              {home.aboutPreview.title}
             </h2>
-            <p className="mt-8 text-charcoal/75 leading-relaxed text-lg">
-              Starshot is a Sydney-based wedding photography studio devoted to capturing
-              genuine emotion, natural moments, and the quiet beauty of a love that's
-              entirely your own.
-            </p>
-            <p className="mt-5 text-charcoal/70 leading-relaxed">
-              Every couple is welcomed into a calm, luxurious experience — from the first
-              hello to the final heirloom album. The result: timeless photographs you'll
-              return to for a lifetime.
-            </p>
+            {home.aboutPreview.paragraphs.map((p, i) => (
+              <p
+                key={i}
+                className={i === 0 ? "mt-8 text-charcoal/75 leading-relaxed text-lg" : "mt-5 text-charcoal/70 leading-relaxed"}
+              >
+                {p}
+              </p>
+            ))}
             <Link to="/about" className="btn-ghost mt-10 hover:gap-5">
-              Learn More
+              {home.aboutPreview.ctaLabel}
               <ArrowRight size={14} />
             </Link>
           </div>
@@ -170,12 +127,9 @@ function HomePage() {
 
       {/* TESTIMONIALS */}
       <Section>
-        <SectionHeader
-          eyebrow="Kind Words"
-          title="Loved by couples across Sydney"
-        />
+        <SectionHeader eyebrow={home.testimonials.eyebrow} title={home.testimonials.title} />
         <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((t) => (
+          {home.testimonials.items.map((t) => (
             <figure
               key={t.author}
               className="bg-ivory border border-border p-10 flex flex-col shadow-soft hover:shadow-elegant transition-shadow duration-500"
@@ -196,7 +150,7 @@ function HomePage() {
       {/* CTA */}
       <section className="relative py-32 md:py-40 overflow-hidden">
         <img
-          src={feat5}
+          src={home.cta.backgroundImage}
           alt=""
           aria-hidden
           loading="lazy"
@@ -206,21 +160,18 @@ function HomePage() {
         <div className="relative max-w-3xl mx-auto px-6 text-center text-ivory">
           <p className="eyebrow !text-ivory/70 mb-6">
             <span className="hairline mr-3 !bg-champagne" />
-            Enquire Today
+            {home.cta.eyebrow}
             <span className="hairline ml-3 !bg-champagne" />
           </p>
           <h2 className="font-serif text-4xl md:text-6xl leading-[1.05]">
-            Ready to Begin <em className="italic text-champagne font-light">Your Story?</em>
+            {home.cta.title} <em className="italic text-champagne font-light">{home.cta.titleItalic}</em>
           </h2>
-          <p className="mt-6 text-ivory/80 max-w-xl mx-auto">
-            Limited weddings booked each year to ensure every couple receives our full
-            attention and care.
-          </p>
+          <p className="mt-6 text-ivory/80 max-w-xl mx-auto">{home.cta.body}</p>
           <Link
             to="/contact"
             className="mt-10 inline-flex btn-primary !bg-ivory !text-charcoal !border-ivory hover:!bg-transparent hover:!text-ivory"
           >
-            Contact Us
+            {home.cta.ctaLabel}
             <ArrowRight size={14} />
           </Link>
         </div>
