@@ -35,7 +35,7 @@ export function Nav() {
             scrolled || open ? "text-charcoal" : "text-ivory"
           }`}
         >
-          STARSHOT
+          STARSSHOT
         </Link>
 
         <nav className="hidden md:flex items-center gap-10">

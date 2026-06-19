@@ -8,13 +8,13 @@ import { home } from "@/content/site";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Starshot — Luxury Wedding Photography in Sydney" },
+      { title: "Starsshot — Luxury Wedding Photography in Sydney" },
       {
         name: "description",
         content:
-          "Starshot is a Sydney-based luxury wedding photography studio capturing timeless, romantic love stories across Australia.",
+          "Starsshot is a Sydney-based luxury wedding photography studio capturing timeless, romantic love stories across Australia.",
       },
-      { property: "og:title", content: "Starshot — Luxury Wedding Photography in Sydney" },
+      { property: "og:title", content: "Starsshot — Luxury Wedding Photography in Sydney" },
       { property: "og:description", content: "Elegant wedding photography across Sydney and beyond." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
