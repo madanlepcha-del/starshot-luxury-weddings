@@ -11,9 +11,9 @@ const iconMap: Record<string, LucideIcon> = {
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Starsshot Wedding Photography" },
-      { name: "description", content: "Meet the storyteller behind Starsshot — a Sydney wedding photographer devoted to natural, timeless imagery." },
-      { property: "og:title", content: "About — Starsshot Wedding Photography" },
+      { title: "About — Starshots Wedding Photography" },
+      { name: "description", content: "Meet the storyteller behind Starshots — a Sydney wedding photographer devoted to natural, timeless imagery." },
+      { property: "og:title", content: "About — Starshots Wedding Photography" },
       { property: "og:description", content: "A Sydney wedding photographer devoted to natural, timeless imagery." },
       { property: "og:url", content: "/about" },
     ],
