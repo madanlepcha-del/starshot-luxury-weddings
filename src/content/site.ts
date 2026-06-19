@@ -66,10 +66,10 @@ export const home = {
     ],
   },
   aboutPreview: {
-    eyebrow: "About Starshot",
+    eyebrow: "About Starsshot",
     title: "A storyteller behind the lens",
     paragraphs: [
-      "Starshot is a Sydney-based wedding photography studio devoted to capturing genuine emotion, natural moments, and the quiet beauty of a love that's entirely your own.",
+      "Starsshot is a Sydney-based wedding photography studio devoted to capturing genuine emotion, natural moments, and the quiet beauty of a love that's entirely your own.",
       "Every couple is welcomed into a calm, luxurious experience — from the first hello to the final heirloom album. The result: timeless photographs you'll return to for a lifetime.",
     ],
     ctaLabel: "Learn More",
@@ -82,7 +82,7 @@ export const home = {
     items: [
       {
         quote:
-          "Starshot captured our wedding day with such artistry and grace. Every photograph feels like a film still — we will treasure them forever.",
+          "Starsshot captured our wedding day with such artistry and grace. Every photograph feels like a film still — we will treasure them forever.",
         author: "Olivia & James",
         venue: "Gunners Barracks, Sydney",
       },
@@ -114,7 +114,7 @@ export const home = {
 // ---------- ABOUT PAGE ----------
 export const about_page = {
   hero: {
-    eyebrow: "About Starshot",
+    eyebrow: "About Starsshot",
     title: "A studio devoted to your story",
     subtitle: "Sydney-based, available worldwide.",
   },
@@ -122,7 +122,7 @@ export const about_page = {
     eyebrow: "Our Story",
     title: "Photography rooted in feeling, not formula",
     paragraphs: [
-      "Starshot began with a simple belief: a wedding day is best remembered through the small, unscripted moments — the laughter shared, the held breath before vows, the warmth of a quiet glance.",
+      "Starsshot began with a simple belief: a wedding day is best remembered through the small, unscripted moments — the laughter shared, the held breath before vows, the warmth of a quiet glance.",
       "For more than a decade we've had the privilege of documenting weddings across Sydney's most beloved venues, from intimate coastal elopements to grand harbourside celebrations.",
       "Our work is quiet, considered, and deeply personal — designed to feel as timeless in twenty years as it does today.",
     ],
@@ -140,7 +140,7 @@ export const about_page = {
     ],
   },
   reasons: {
-    eyebrow: "Why Starshot",
+    eyebrow: "Why Starsshot",
     title: "A complete, considered experience",
     items: [
       { iconName: "Camera", title: "Experienced eye", text: "Years of photographing Sydney's most loved venues with a calm, prepared presence." },
@@ -168,11 +168,11 @@ export const contact = {
     label: "Studio",
     text: "By appointment in Sydney, Australia",
   },
-  email: "hello@starshot.studio",
+  email: "hello@starsshot.studio",
   phone: "+61 400 000 000",
   phoneHref: "+61400000000",
   location: "Sydney · NSW · Available worldwide",
-  instagram: "@starshot.studio",
+  instagram: "@starsshot.studio",
   instagramHref: "#",
   investment: {
     label: "Investment",
