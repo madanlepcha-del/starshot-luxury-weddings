@@ -8,9 +8,9 @@ import { contact } from "@/content/site";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Starsshot Wedding Photography" },
+      { title: "Contact — Starshots Wedding Photography" },
       { name: "description", content: "Enquire about your Sydney wedding photography. We'd love to hear about your day." },
-      { property: "og:title", content: "Contact — Starsshot Wedding Photography" },
+      { property: "og:title", content: "Contact — Starshots Wedding Photography" },
       { property: "og:description", content: "Enquire about your Sydney wedding photography." },
       { property: "og:url", content: "/contact" },
     ],

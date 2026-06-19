@@ -10,9 +10,9 @@ type CategoryId = (typeof gallery.categories)[number]["id"];
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — Starsshot Wedding Photography" },
+      { title: "Gallery — Starshots Wedding Photography" },
       { name: "description", content: "A curated gallery of weddings, engagements, elopements and receptions captured across Sydney." },
-      { property: "og:title", content: "Gallery — Starsshot Wedding Photography" },
+      { property: "og:title", content: "Gallery — Starshots Wedding Photography" },
       { property: "og:description", content: "Weddings, engagements, elopements and receptions captured across Sydney." },
       { property: "og:url", content: "/gallery" },
     ],
