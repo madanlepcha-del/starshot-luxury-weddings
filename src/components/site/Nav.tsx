@@ -58,7 +58,7 @@ export function Nav() {
         </nav>
 
         <button
-          className={`md:hidden ${scrolled || open ? "text-charcoal" : "text-ivory"}`}
+          className={`md:hidden ${useDark ? "text-charcoal" : "text-ivory"}`}
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
         >
