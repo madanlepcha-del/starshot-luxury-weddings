@@ -21,10 +21,35 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setSubmitting(true);
+    try {
+      const form = e.currentTarget;
+      const fd = new FormData(form);
+      const payload: Record<string, string> = {
+        _subject: `New Starshots enquiry from ${fd.get("name") || "website"}`,
+        _template: "table",
+        _captcha: "false",
+      };
+      fd.forEach((v, k) => { payload[k] = String(v); });
+
+      const res = await fetch("https://formsubmit.co/ajax/madanlepcha@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -71,6 +96,7 @@ function ContactPage() {
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-6">
+                <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
                 <div className="grid sm:grid-cols-2 gap-6">
                   <Field label="Name" name="name" required />
                   <Field label="Email" name="email" type="email" required />
@@ -89,8 +115,9 @@ function ContactPage() {
                     placeholder="Tell us about your day…"
                   />
                 </div>
-                <button type="submit" className="btn-primary mt-4 hover:bg-transparent hover:text-charcoal w-full sm:w-auto">
-                  {contact.submitLabel}
+                {error && <p className="text-sm text-red-600">{error}</p>}
+                <button type="submit" disabled={submitting} className="btn-primary mt-4 hover:bg-transparent hover:text-charcoal w-full sm:w-auto disabled:opacity-60">
+                  {submitting ? "Sending…" : contact.submitLabel}
                 </button>
               </form>
             )}
