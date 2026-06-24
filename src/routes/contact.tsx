@@ -96,6 +96,7 @@ function ContactPage() {
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-6">
+                <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
                 <div className="grid sm:grid-cols-2 gap-6">
                   <Field label="Name" name="name" required />
                   <Field label="Email" name="email" type="email" required />
@@ -114,8 +115,9 @@ function ContactPage() {
                     placeholder="Tell us about your day…"
                   />
                 </div>
-                <button type="submit" className="btn-primary mt-4 hover:bg-transparent hover:text-charcoal w-full sm:w-auto">
-                  {contact.submitLabel}
+                {error && <p className="text-sm text-red-600">{error}</p>}
+                <button type="submit" disabled={submitting} className="btn-primary mt-4 hover:bg-transparent hover:text-charcoal w-full sm:w-auto disabled:opacity-60">
+                  {submitting ? "Sending…" : contact.submitLabel}
                 </button>
               </form>
             )}
