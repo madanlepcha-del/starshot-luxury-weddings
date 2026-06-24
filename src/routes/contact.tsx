@@ -21,10 +21,35 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setSubmitting(true);
+    try {
+      const form = e.currentTarget;
+      const fd = new FormData(form);
+      const payload: Record<string, string> = {
+        _subject: `New Starshots enquiry from ${fd.get("name") || "website"}`,
+        _template: "table",
+        _captcha: "false",
+      };
+      fd.forEach((v, k) => { payload[k] = String(v); });
+
+      const res = await fetch("https://formsubmit.co/ajax/madanlepcha@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
