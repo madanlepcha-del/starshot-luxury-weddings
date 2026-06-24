@@ -26,7 +26,7 @@ export function Nav() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled || open
+        useDark
           ? "bg-ivory/95 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       }`}
@@ -35,7 +35,7 @@ export function Nav() {
         <Link
           to="/"
           className={`font-serif text-2xl tracking-[0.35em] transition-colors ${
-            scrolled || open ? "text-charcoal" : "text-ivory"
+            useDark ? "text-charcoal" : "text-ivory"
           }`}
         >
           STARSHOTS
@@ -47,7 +47,7 @@ export function Nav() {
               key={it.to}
               to={it.to}
               className={`text-[0.72rem] tracking-[0.3em] uppercase transition-colors ${
-                scrolled ? "text-charcoal/80 hover:text-charcoal" : "text-ivory/90 hover:text-ivory"
+                useDark ? "text-charcoal/80 hover:text-charcoal" : "text-ivory/90 hover:text-ivory"
               }`}
               activeProps={{ className: "!text-champagne" }}
               activeOptions={{ exact: it.to === "/" }}
