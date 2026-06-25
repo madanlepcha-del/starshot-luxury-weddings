@@ -47,7 +47,7 @@ export const home = {
     eyebrow: "Sydney Wedding Photography",
     title: "Capturing Timeless",
     titleItalic: "Love Stories",
-    subtitle: "Elegant wedding photography across Sydney and beyond.",
+    subtitle: "Elegant wedding photography across Sydney and beyond. We are the best at what we do.",
     ctaLabel: "Start Your Journey",
     image: images.hero,
     imageAlt: "Bride and groom embracing at Sydney Harbour sunset",
