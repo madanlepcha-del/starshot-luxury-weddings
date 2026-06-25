@@ -15,4 +15,8 @@ export default defineConfig({
       { path: "/contact" },
     ],
   },
+  // Force-enable the underlying Nitro engine to build for Cloudflare Pages
+  nitro: {
+    preset: "cloudflare-pages",
+  },
 });
